@@ -14,16 +14,16 @@ const findUserBookmarksByEmail = (email) => {
 
 const addUserBookmark = (uid, bid) => {
     return userBookmarksModel.update({_id: uid}, {
-        $push: {
+        $addToSet: {
             bookmarks: bid
-        }, done
+        },
     });
 }
 
 const deleteUserBookmark = (uid, bid) => {
     return userBookmarksModel.updateOne({_id: uid}, {
         $pullAll: {
-            bookmarks: [{bid: bid}],
+            bookmarks: bid
         },
     });
 }
