@@ -12,11 +12,23 @@ const findUserBookmarksByEmail = (email) => {
     return userBookmarksModel.findOne({email})
 }
 
-const deleteUserBookmarks = (uid) => {
-    return userBookmarksModel.deleteOne({uid})
+const addUserBookmark = (uid, bid) => {
+    return userBookmarksModel.update({_id: uid}, {
+        $push: {
+            bookmarks: bid
+        }, done
+    });
+}
+
+const deleteUserBookmark = (uid, bid) => {
+    return userBookmarksModel.updateOne({_id: uid}, {
+        $pullAll: {
+            bookmarks: [{bid: bid}],
+        },
+    });
 }
 
 module.exports = {
-    findAllUserBookmarks, findUserBookmarksByEmail, findUserBookmarksById,
-    deleteUserBookmarks
+    findAllUserBookmarks, findUserBookmarksByEmail, findUserBookmarksById, addUserBookmark,
+    deleteUserBookmark
 }
