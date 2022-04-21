@@ -7,4 +7,4 @@ mongoose.connect('mongodb+srv://yelpproject:codingisfun@cluster0.cf2bs.mongodb.n
 app.use(express.json());
 
 app.get('/hello', (req, res) => {res.send('Hello World!')})
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
