@@ -5,7 +5,7 @@ const userReviewsSchema = mongoose.Schema({
     email: {type: String, required: true},
     firstName: {type: String},
     lastName: {type: String},
-    businessId: {type: String},
+    businessId: {type: String, required: true},
     businessName: {type: String},
     businessLocation: {type: Object},
     businessPrice: {type: String},

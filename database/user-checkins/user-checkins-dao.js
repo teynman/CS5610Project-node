@@ -20,11 +20,11 @@ const createUserCheckin = (userCheckin) => {
     return userCheckinsModel.create(userCheckin)
 }
 
-const deleteUserReview = (id) => {
+const deleteUserCheckin = (id) => {
     return userCheckinsModel.deleteOne({_id: id})
 }
 
 module.exports = {
     findAllUserCheckins, findUserCheckinsByBusiness, findUserCheckinsByEmail,
-    findUserCheckinsByUid, createUserCheckin, deleteUserReview
+    findUserCheckinsByUid, createUserCheckin, deleteUserCheckin
 }
