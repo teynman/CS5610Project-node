@@ -21,7 +21,7 @@ const addUserFollowing = (uid, fuid) => {
 }
 
 const deleteUserFollowing = (uid, fuid) => {
-    return userFollowingModel.updateOne({_id: uid}, {
+    return userFollowingModel.updateOne({uid: uid}, {
         $pullAll: {
             bookmarks: fuid
         },
