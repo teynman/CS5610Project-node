@@ -2,11 +2,7 @@ const reviewsDao = require("../database/user-reviews/user-reviews-dao");
 
 const findAllUserReviews = async (req, res) => {
     const allUserReviews = await reviewsDao.findAllUserReviews()
-    if (allUserReviews) {
-        res.json(allUserReviews)
-    } else {
-        res.sendStatus(404)
-    }
+    res.json(allUserReviews)
 }
 
 const findUserReviewsById = async (req, res) => {
