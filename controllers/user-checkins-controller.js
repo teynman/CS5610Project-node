@@ -25,6 +25,16 @@ const findUserCheckinsByEmail = async (req, res) => {
     }
 }
 
+const findUserCheckinsByBusinessId = async (req, res) => {
+    const businessId = req.params.bid
+    const userCheckins = await checkinsDao.findUserCheckinsByBusiness(businessId)
+    if (userCheckins) {
+        res.json(userCheckins)
+    } else {
+        res.sendStatus(404)
+    }
+}
+
 const addUserCheckin = async (req, res) => {
     const userReview = req.body.userReview
     const status = await checkinsDao.createUserCheckin(userReview)
@@ -37,9 +47,10 @@ const deleteUserCheckin = async (req, res) => {
     res.json(status)
 }
 module.exports = (app) => {
-    app.get('api/users/allusercheckins', findAllUserCheckins);
-    app.get('api/users/checkins/uid', findUserCheckinsByUid);
-    app.get('api/users/checkins/email', findUserCheckinsByEmail);
-    app.post('api/users/userCheckins', addUserCheckin);
-    app.delete('api/users/userCheckins/:checkinId', deleteUserCheckin);
+    app.get('/api/checkins', findAllUserCheckins);
+    app.get('/api/checkins/user/:uid', findUserCheckinsByUid);
+    app.get('/api/checkins/email/:email', findUserCheckinsByEmail);
+    app.get('/api/checkins/business/:bid', findUserCheckinsByBusinessId);
+    app.post('/api/checkins', addUserCheckin);
+    app.delete('/api/checkins/:checkinId', deleteUserCheckin);
 }
