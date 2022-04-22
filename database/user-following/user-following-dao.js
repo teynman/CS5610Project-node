@@ -12,6 +12,10 @@ const findUserFollowingByEmail = (email) => {
     return userFollowingModel.findOne({email})
 }
 
+const createUserFollowing = (userFollowing) => {
+    return userFollowingModel.create(userFollowing)
+}
+
 const addUserFollowing = (uid, fuid) => {
     return userFollowingModel.update({uid: uid}, {
         $addToSet: {
@@ -29,6 +33,6 @@ const deleteUserFollowing = (uid, fuid) => {
 }
 
 module.exports = {
-    findAllUserFollowing, findUserFollowingByEmail, findUserFollowingById, addUserFollowing,
+    findAllUserFollowing, findUserFollowingByEmail, findUserFollowingById, createUserFollowing, addUserFollowing,
     deleteUserFollowing
 }

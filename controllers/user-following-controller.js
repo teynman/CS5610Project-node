@@ -26,8 +26,15 @@ const findUserFollowingByEmail = async (req, res) => {
 const addUserFollowing = async (req, res) => {
     const userId = req.params['uid']
     const followingId = req.params['fuid']
-    const insertedFollowing = await followingDao.addUserFollowing(userId, followingId)
-    res.json(insertedFollowing)
+    const currUser = await followingDao.findUserFollowingById(userId)
+    if (!currUser) {
+        const user = req.body
+        const status = await followingDao.createUserFollowing(user)
+        res.json(status)
+    } else {
+        const insertedFollowing = await followingDao.addUserFollowing(userId, followingId)
+        res.json(insertedFollowing)
+    }
 }
 
 const deleteUserFollowing = async (req, res) => {
