@@ -6,7 +6,7 @@ const findAllUserReviews = async (req, res) => {
 }
 
 const findUserReviewsById = async (req, res) => {
-    const userId = req.params.uid
+    const userId = req.params['uid']
     const userReviews = await reviewsDao.findUserReviewsByUid(userId)
     if (userReviews) {
         res.json(userReviews)
@@ -41,5 +41,5 @@ module.exports = (app) => {
     app.get('api/users/reviews/:uid', findUserReviewsById);
     app.get('api/users/reviews/:email', findUserReviewsByEmail);
     app.post('api/users/userReviews', addUserReview);
-    app.delete('api/users/userReviews', deleteUserReview);
+    app.delete('api/users/userReviews/:reviewId', deleteUserReview);
 }
