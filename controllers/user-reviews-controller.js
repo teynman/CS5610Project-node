@@ -47,9 +47,10 @@ const deleteUserReview = async (req, res) => {
     res.json(status)
 }
 module.exports = (app) => {
-    app.get('api/reviews', findAllUserReviews);
-    app.get('api/reviews/user/:uid', findUserReviewsById);
-    app.get('api/reviews/email/:email', findUserReviewsByEmail);
-    app.post('api/reviews', addUserReview);
-    app.delete('api/reviews/:reviewId', deleteUserReview);
+    app.get('/api/reviews', findAllUserReviews);
+    app.get('/api/reviews/user/:uid', findUserReviewsById);
+    app.get('/api/reviews/email/:email', findUserReviewsByEmail);
+    app.get('/api/reviews/business/:bid', findUserReviewsByBusinessId);
+    app.post('/api/reviews', addUserReview);
+    app.delete('/api/reviews/:reviewId', deleteUserReview);
 }
