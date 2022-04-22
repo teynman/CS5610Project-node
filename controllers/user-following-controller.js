@@ -38,9 +38,9 @@ const deleteUserFollowing = async (req, res) => {
 }
 
 module.exports = (app) => {
-    app.get('/api/users/alluserfollowings', findAllUserFollowings);
-    app.get('/api/users/:uid/following', findUserFollowingById);
-    app.get('/api/users/:email/following', findUserFollowingByEmail);
-    app.post('/api/users/:uid/following/:fuid', addUserFollowing);
-    app.delete('/api/users/:uid/following/:fuid', deleteUserFollowing);
+    app.get('/api/followings', findAllUserFollowings);
+    app.get('/api/followings/user/:uid', findUserFollowingById);
+    app.get('/api/followings/email/:email', findUserFollowingByEmail);
+    app.post('/api/followings/:uid/:fuid', addUserFollowing);
+    app.delete('/api/followings/:uid/:fuid', deleteUserFollowing);
 }
