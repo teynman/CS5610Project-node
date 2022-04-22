@@ -10,7 +10,7 @@ const findAllUserReviews = async (req, res) => {
 }
 
 const findUserReviewsById = async (req, res) => {
-    const userId = req.params['uid']
+    const userId = req.params.uid
     const userReviews = await reviewsDao.findUserReviewsByUid(userId)
     if (userReviews) {
         res.json(userReviews)
@@ -22,6 +22,16 @@ const findUserReviewsById = async (req, res) => {
 const findUserReviewsByEmail = async (req, res) => {
     const email = req.params.email
     const userReviews = await reviewsDao.findUserReviewByEmail(email)
+    if (userReviews) {
+        res.json(userReviews)
+    } else {
+        res.sendStatus(404)
+    }
+}
+
+const findUserReviewsByBusinessId = async (req, res) => {
+    const businessId = req.params.bid
+    const userReviews = await reviewsDao.findUserReviewByBusiness(businessId)
     if (userReviews) {
         res.json(userReviews)
     } else {
@@ -41,9 +51,9 @@ const deleteUserReview = async (req, res) => {
     res.json(status)
 }
 module.exports = (app) => {
-    app.get('api/users/reviews/alluserreviews', findAllUserReviews);
-    app.get('api/users/reviews/:uid', findUserReviewsById);
-    app.get('api/users/reviews/:email', findUserReviewsByEmail);
-    app.post('api/users/userReviews', addUserReview);
-    app.delete('api/users/userReviews/:reviewId', deleteUserReview);
+    app.get('api/reviews', findAllUserReviews);
+    app.get('api/reviews/user/:uid', findUserReviewsById);
+    app.get('api/reviews/email/:email', findUserReviewsByEmail);
+    app.post('api/reviews', addUserReview);
+    app.delete('api/reviews/:reviewId', deleteUserReview);
 }
