@@ -36,7 +36,7 @@ const findUserReviewsByBusinessId = async (req, res) => {
 }
 
 const addUserReview = async (req, res) => {
-    const userReview = req.body.userReview
+    const userReview = req.body
     const status = await reviewsDao.createUserReview(userReview)
     res.json(status)
 }
