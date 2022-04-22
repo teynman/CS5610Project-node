@@ -13,7 +13,7 @@ const findUserFollowingByEmail = (email) => {
 }
 
 const addUserFollowing = (uid, fuid) => {
-    return userFollowingModel.update({_id: uid}, {
+    return userFollowingModel.update({uid: uid}, {
         $addToSet: {
             following: fuid
         },
