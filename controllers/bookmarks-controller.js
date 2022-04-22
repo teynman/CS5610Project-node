@@ -26,6 +26,12 @@ const findUserBookmarksByEmail = async (req, res) => {
 const addUserBookmark = async (req, res) => {
     const userId = req.params['uid']
     const businessId = req.params['bid']
+    const currUser = await bookmarksDao.findUserBookmarksById(userId)
+    if (!currUser) {
+        const user = req.body
+        const status = await bookmarksDao.createUserBookmarks(user)
+        res.json(status)
+    }
     const insertedBookmark = await bookmarksDao.addUserBookmark(userId, businessId)
     res.json(insertedBookmark)
 }
@@ -38,9 +44,9 @@ const deleteUserBookmark = async (req, res) => {
 }
 
 module.exports = (app) => {
-    app.get('/api/users/alluserbookmarks', findAllUserBookmarks);
-    app.get('/api/users/:uid/bookmarks', findUserBookmarksById);
-    app.get('/api/users/:email/bookmarks', findUserBookmarksByEmail);
-    app.post('/api/users/:uid/bookmarks', addUserBookmark);
-    app.delete('/api/users/:uid/bookmarks/:bid', deleteUserBookmark);
+    app.get('/api/bookmarks', findAllUserBookmarks);
+    app.get('/api/bookmarks/user/:uid', findUserBookmarksById);
+    app.get('/api/bookmarks/email/:email', findUserBookmarksByEmail);
+    app.post('/api/bookmarks/:uid/:bid', addUserBookmark);
+    app.delete('/api/bookmarks/:uid/:bid', deleteUserBookmark);
 }

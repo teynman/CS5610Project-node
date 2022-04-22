@@ -12,6 +12,10 @@ const findUserBookmarksByEmail = (email) => {
     return userBookmarksModel.findOne({email})
 }
 
+const createUserBookmarks = (userBookmark) => {
+    return userBookmarksModel.create(userBookmark)
+}
+
 const addUserBookmark = (uid, bid) => {
     return userBookmarksModel.update({_id: uid}, {
         $addToSet: {
@@ -29,6 +33,6 @@ const deleteUserBookmark = (uid, bid) => {
 }
 
 module.exports = {
-    findAllUserBookmarks, findUserBookmarksByEmail, findUserBookmarksById, addUserBookmark,
+    findAllUserBookmarks, findUserBookmarksByEmail, findUserBookmarksById, createUserBookmarks, addUserBookmark,
     deleteUserBookmark
 }

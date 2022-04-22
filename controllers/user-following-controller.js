@@ -31,10 +31,9 @@ const addUserFollowing = async (req, res) => {
         const user = req.body
         const status = await followingDao.createUserFollowing(user)
         res.json(status)
-    } else {
-        const insertedFollowing = await followingDao.addUserFollowing(userId, followingId)
-        res.json(insertedFollowing)
     }
+    const insertedFollowing = await followingDao.addUserFollowing(userId, followingId)
+    res.json(insertedFollowing)
 }
 
 const deleteUserFollowing = async (req, res) => {
