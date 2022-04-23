@@ -29,9 +29,9 @@ const findUserByCredentials = async (req, res) => {
         email, password
     )
     if(user) {
-        res.sendStatus(200)
+        res.json(user)
     } else {
-        res.sendStatus(403)
+        res.sendStatus(404)
     }
 }
 const createUser = async (req, res) => {
