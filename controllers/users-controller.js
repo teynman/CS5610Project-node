@@ -55,7 +55,7 @@ module.exports = (app) => {
     app.get('/api/users', findAllUsers);
     app.get('/api/users/user/:id', findUserById);
     app.get('/api/users/email/:email', findUserByEmail);
-    app.get('/api/users/credentials', findUserByCredentials);
+    app.post('/api/users/credentials', findUserByCredentials);
     app.post('/api/users/user', createUser);
     app.put('/api/users/user/:id', updateUser);
     app.delete('/api/users/user/:id', deleteUser);
