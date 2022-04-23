@@ -40,14 +40,9 @@ const logout = (req, res) => {
     res.sendStatus(200);
 }
 
-const findUsers = (req, res) => {
-    res.json(users);
-}
-
 module.exports = (app) => {
     app.post('/api/signup', signup);
     app.post('/api/profile', profile);
     app.post('/api/signin', login);
     app.post('/api/logout', logout);
-    app.get('/api/users', findUsers);
 }

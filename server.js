@@ -5,6 +5,10 @@ const cors = require('cors');
 const app = express();
 mongoose.connect('mongodb+srv://yelpproject:codingisfun@cluster0.cf2bs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 app.use(cors());
+app.use(session({
+    secret: 'SECRETO',
+    cookie: {secure: false}
+}));
 app.use(express.json());
 
 require("./controllers/users-controller")(app);
