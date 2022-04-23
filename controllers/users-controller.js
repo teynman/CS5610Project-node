@@ -31,7 +31,7 @@ const findUserByCredentials = async (req, res) => {
     if(user) {
         res.json(user)
     } else {
-        res.sendStatus(404)
+        res.sendStatus(403)
     }
 }
 const createUser = async (req, res) => {
