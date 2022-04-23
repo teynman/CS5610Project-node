@@ -53,10 +53,10 @@ const deleteUser = async (req, res) => {
 
 module.exports = (app) => {
     app.get('/api/users', findAllUsers);
-    app.get('/api/users/:id', findUserById);
+    app.get('/api/users/user/:id', findUserById);
     app.get('/api/users/email/:email', findUserByEmail);
     app.get('/api/users/credentials', findUserByCredentials);
-    app.post('/api/users', createUser);
-    app.put('/api/users/:id', updateUser);
-    app.delete('/api/users/:id', deleteUser);
+    app.post('/api/users/user', createUser);
+    app.put('/api/users/user/:id', updateUser);
+    app.delete('/api/users/user/:id', deleteUser);
 }
