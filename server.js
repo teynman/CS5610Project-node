@@ -13,7 +13,7 @@ app.use(session({
     secret: 'SECRET',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true }
+    cookie: { secure: false }
 }));
 app.use(express.json());
 
