@@ -11,8 +11,6 @@ app.use(cors({
 app.set('trust proxy', 1);
 app.use(session({
     secret: 'SECRET',
-    resave: false,
-    saveUninitialized: true,
     cookie: { secure: false }
 }));
 app.use(express.json());
