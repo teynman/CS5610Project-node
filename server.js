@@ -8,16 +8,13 @@ app.use(cors({
     credentials: true,
     origin: 'http://localhost:3000'
 }));
-let session = {
-    secret: 'SECRET',
-    cookie: { secure: false }
-};
-if (process.env.ENV === 'production') {
-    app.set('trust proxy', 1)
-    session.cookie.secure = true;
-}
-
-app.use(session);
+app.set('trust proxy', 1);
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}));
 app.use(express.json());
 
 require("./controllers/users-controller")(app);
