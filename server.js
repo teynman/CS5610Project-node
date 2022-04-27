@@ -10,7 +10,7 @@ app.use(cors({
 }));
 app.use(session({
     secret: 'SECRETO',
-    cookie: {secure: false}
+    cookie: {secure: true}
 }));
 app.use(express.json());
 
