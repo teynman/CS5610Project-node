@@ -5,7 +5,10 @@ const cors = require('cors');
 const app = express();
 mongoose.connect('mongodb+srv://yelpproject:codingisfun@cluster0.cf2bs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 app.use(cors());
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({
+    credentials: true,
+    origin: 'http://localhost:3000'
+}));
 app.use(session({
     secret: 'SECRETO',
     cookie: {secure: false}
@@ -19,5 +22,5 @@ require("./controllers/auth-controller")(app);
 require("./controllers/user-reviews-controller")(app);
 require("./controllers/user-checkins-controller")(app);
 
-app.get('/hello', (req, res) => {res.send('Hello World!')})
+app.get('/', (req, res) => {res.send('Hello World!')})
 app.listen(process.env.PORT || 4000);
