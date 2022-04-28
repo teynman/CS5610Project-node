@@ -27,7 +27,7 @@ const addUserBookmark = async (req, res) => {
     const userId = req.params['uid']
     const businessId = req.params['bid']
     const currUser = await bookmarksDao.findUserBookmarksById(userId)
-    if (!currUser) {
+    if (currUser.length === 0) {
         const user = req.body
         const status = await bookmarksDao.createUserBookmarks(user)
         res.json(status)
