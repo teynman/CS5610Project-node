@@ -11,7 +11,7 @@ const usersSchema = mongoose.Schema({
     hobby: {type: String},
     signature: {type: String},
     userAvatar: {type: String},
-    admin: {type: Boolean}
+    admin: {type: Boolean, required: true}
 }, {collection: 'users'});
 
 module.exports = usersSchema;
