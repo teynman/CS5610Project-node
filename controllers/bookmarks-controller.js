@@ -33,7 +33,7 @@ const addUserBookmark = async (req, res) => {
     }
     await bookmarksDao.addUserBookmark(userId, businessId)
     const updatedUserBookmarks = await bookmarksDao.findUserBookmarksById(userId)
-    res.json(updatedUserBookmarks)
+    res.json(businessId)
 }
 
 const deleteUserBookmark = async (req, res) => {
