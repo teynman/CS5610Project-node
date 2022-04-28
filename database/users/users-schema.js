@@ -10,7 +10,8 @@ const usersSchema = mongoose.Schema({
     livingIn: {type: String},
     hobby: {type: String},
     signature: {type: String},
-    userAvatar: {type: String}
+    userAvatar: {type: String},
+    admin: {type: Boolean}
 }, {collection: 'users'});
 
 module.exports = usersSchema;
