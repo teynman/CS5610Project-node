@@ -17,7 +17,7 @@ const createUserBookmarks = (userBookmark) => {
 }
 
 const addUserBookmark = (uid, bid) => {
-    return userBookmarksModel.update({_id: uid}, {
+    return userBookmarksModel.update({uid: uid}, {
         $addToSet: {
             bookmarks: bid
         },
@@ -25,8 +25,8 @@ const addUserBookmark = (uid, bid) => {
 }
 
 const deleteUserBookmark = (uid, bid) => {
-    return userBookmarksModel.updateOne({_id: uid}, {
-        $pullAll: {
+    return userBookmarksModel.updateOne({uid: uid}, {
+        $pull: {
             bookmarks: bid
         },
     });

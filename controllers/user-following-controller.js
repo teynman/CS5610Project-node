@@ -31,9 +31,9 @@ const addUserFollowing = async (req, res) => {
         const user = req.body
         await followingDao.createUserFollowing(user)
     }
-    const check = await followingDao.addUserFollowing(userId, followingId)
+    await followingDao.addUserFollowing(userId, followingId)
     const updatedCurrUser = await followingDao.findUserFollowingById(userId)
-    res.json(check)
+    res.json(updatedCurrUser)
 }
 
 const deleteUserFollowing = async (req, res) => {

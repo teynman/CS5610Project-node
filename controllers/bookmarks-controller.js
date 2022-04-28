@@ -31,9 +31,9 @@ const addUserBookmark = async (req, res) => {
         const user = req.body
         await bookmarksDao.createUserBookmarks(user)
     }
-    const check = await bookmarksDao.addUserBookmark(userId, businessId)
+    await bookmarksDao.addUserBookmark(userId, businessId)
     const updatedUserBookmarks = await bookmarksDao.findUserBookmarksById(userId)
-    res.json(check)
+    res.json(updatedUserBookmarks)
 }
 
 const deleteUserBookmark = async (req, res) => {
