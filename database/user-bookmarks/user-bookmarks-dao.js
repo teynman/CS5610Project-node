@@ -17,8 +17,8 @@ const createUserBookmarks = (userBookmark) => {
 }
 
 const addUserBookmark = (uid, bid) => {
-    return userBookmarksModel.updateOne({_id: uid}, {
-        $addToSet: {
+    return userBookmarksModel.update({_id: uid}, {
+        $push: {
             bookmarks: bid
         },
     });
